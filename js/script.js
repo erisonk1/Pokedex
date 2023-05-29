@@ -1,4 +1,4 @@
-const pokeImage = document.querySelector('.poke-image');
+const pokeImage = document.querySelectorAll('.poke-image');
 const pokeName = document.querySelector('.poke-name');
 const btn = document.querySelector('.passbtn');
 const containerMain = document.querySelector('.container-main');
