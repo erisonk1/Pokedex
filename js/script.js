@@ -7,7 +7,7 @@ let i = 0;
 
 function fetchApi() {
     console.log(i)
-  const url = fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${i}`);
+  const url = fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${i}`);
 
   Promise.resolve(url).then(response => response.json())
     .then((response) => {

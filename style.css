@@ -61,11 +61,15 @@ h1 {
 main {
     margin-top: 100px;
     width: 100%;
-
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
     padding: 100px 50px;
+    align-items: center;
+    gap: 20px;
 }
 .container-main {
-    background-color: rgb(192, 192, 192);  
+    background-color: rgb(231, 230, 230);  
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -86,7 +90,9 @@ main {
     flex-direction: column;
     padding: 50px 40px;
     gap: 15px;
-    position: relative
+    position: relative;
+    animation: transition 0.5s;
+    box-shadow: -5px 5px 12px 0px rgba(0,0,0,0.75);
 }
 
 .card-center{
@@ -108,7 +114,7 @@ main {
 }
 
 .card-poke-img {
-    width: 80%;
+    width: 200px;
 }
 .card-poke-id {
     font-size: 20px;
@@ -141,3 +147,34 @@ main {
     align-items: center;
     font-weight: bold;
 }
+
+.load {
+    width: 300px;
+    height: 90px;
+    font-size: 30px;
+    background-color: rgba(255, 0, 0, 0.849);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+}
+
+.load:hover {
+    transform: scale(1.05);
+    transition: 0.5s all ease-in-out;
+}
+
+@keyframes transition {
+    from{
+      opacity: 0;
+      transform: translate3d(-50px, 0, 0);
+      
+    } 
+  
+    to{
+      opacity: 1;
+      transform: translate3d(0px, 0, 0);
+    }
+  }
+  
