@@ -1,34 +1,50 @@
-const pokeImg = document.querySelector('.card-poke-img');
-const pokeName = document.querySelector('.card-poke-name');
-const containerMain = document.querySelector('.container-main');
-const pokeId = document.querySelector('.card-poke-id');
-const card = document.querySelector('card');
+const pokeImg = document.querySelector(".card-poke-img");
+const pokeName = document.querySelectorAll(".card-poke-name");
+const containerMain = document.querySelector(".container-main");
+const pokeId = document.querySelector(".card-poke-id");
+let card = document.querySelectorAll(".card");
+let i = 0;
 
-let i = 1;
-fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-.then(r => r.json())
-.then(data => {
-    console.log(data)
-    pokeImg.src = data.sprites.other.dream_world.front_default;
-    pokeName.innerText = data.name
-})
+function fetchApi() {
+    console.log(i)
+  const url = fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${i}`);
 
-function criaCard() {
-    const mcard = document.createElement('div');
-    containerMain.appendChild(mcard)
-    mcard.classList.add('card');
-    mcard.innerHTML = `
+  Promise.resolve(url).then(response => response.json())
+    .then((response) => {
+      const pokeLista = response.results;
+        pokeLista.map((pokemon) => {
+            console.log(pokemon)
+            const pokeId = pokemon.url.split('/')[6]
+            console.log(pokeId)
+            const urlFoto = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`
+            criaCard(urlFoto, pokemon.name, pokeId);
+        })
+        i = i + 10
+
+     
+    })
+    .catch(() => console.log("deu erro/nao carregou"))
+    .finally();
+}
+
+function criaCard(urlFoto, nome, pokeId) {
+  const mcard = document.createElement("div");
+  containerMain.appendChild(mcard);
+
+  mcard.innerHTML = `
     <div class="card">
                 <div class="card-center">
                  <div class="card-poke-back">
-                     <img class="card-poke-img" src="./img/charizard.svg" alt="">
+                     <img class="card-poke-img" src="${urlFoto}" alt="">
                  </div>
                 </div> 
                 
-                 <p class="card-poke-id">#006</p>
-                 <div class="card-center-stats"><h1 class="card-poke-name">Charizard </h1> <img class="card-poke-type" src="./img/fire.svg" alt=""></div>
+                 <p class="card-poke-id">#${pokeId}</p>
+                 <div class="card-center-stats"><h1 class="card-poke-name">${nome}</h1> <img class="card-poke-type" src="./img/fire.svg" alt=""></div>
                  
                  
              </div>
-    `
+    `;
+  card = document.querySelectorAll(".card");
 }
+fetchApi();

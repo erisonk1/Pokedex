@@ -70,10 +70,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 30px;
     position: relative;
     width: 100%;
     flex-wrap: wrap;
+    gap: 25px;
 }
 
 .card {
@@ -107,7 +108,7 @@ main {
 }
 
 .card-poke-img {
-    width: 120%;
+    width: 80%;
 }
 .card-poke-id {
     font-size: 20px;
