@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./card.css">
-    <title>Document</title>
-    
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/card.css" />
+    <link rel="stylesheet" href="./css/colors.css" />
+    <title>Pokédex</title>
+  </head>
+  <body>
     <header>
-        <div class="top">
-            <h1 class="head-text">MyPokédex.</h1>
+      <div class="top">
+        <h1 class="head-text">MyPokédex.</h1>
+      </div>
 
-        </div>
-        
-        
-        <div class="texts">
-                <h2>Who is that Pokemon?</h2>
-            <p>The perfect guide for those who want to hunt Pokémons around the world</p>
-        </div>
+      <div class="texts">
+        <h2>Who is that Pokemon?</h2>
+        <p>
+          The perfect guide for those who want to hunt Pokémons around the world
+        </p>
+      </div>
 
-        <img class="pokebola" src="./img/pokeball-red.png" alt="">
+      <img class="pokebola" src="./img/pokeball-red.png" alt="" />
     </header>
 
     <main>
-        <div class="container-main">
-        </div>
-        <button class="load" onclick="fetchApi()">Load More</button>
+      <nav>
+        <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Ghost</a></li>
+            <li><a href="#">Stone</a></li>
+            <li><a href="#">Plants</a></li>
+            <li><a href="#">Dragon</a></li>
+            <li><a href="#">Metal</a></li>
+            <li><a href="#">Shock</a></li>
+            <li><a href="#">Water</a></li>
+            <li><a href="#">Fire</a></li>
+            <li><a href="#">Insect</a></li>
+            <li><a href="#">Flying</a></li>
+
+
+
+        </ul>
+        
+      </nav>
+      <div class="container">
+      <div class="container-main"></div>
+      <button class="load" onclick="fetchApi()">Load More</button>
+    </div>  
     </main>
-
-
+    
     <script src="./js/script.js"></script>
-</body>
+  </body>
 </html>
