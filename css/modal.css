@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@700&display=swap');
+:root {
+    --bug: #9BBA48;
+    --grass: #9BBA48;
+    --dark: #595761;
+    --poison: #595761;
+    --dragon: #447AC6;
+    --electric: #ecd343;
+    --fairy: #E296E1;
+    --fighting: #C44D61;
+    --ground: #CE8056;
+    --ice: #8BCEC1;
+    --normal: #A0A29F;
+    --poison: #AC6ACA;
+    --physic: #EB8B85;
+    --psychic: #f058d6;
+    --rock: #8BCEC1;
+    --ghost: #616EB7;
+    --steel: #6594A1;
+    --flying: #A6BBE8;
+    --water: #1254af;
+    --fire : rgba(255, 95, 21, 0.76);
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+}
+
+
+body {
+    background-color: black;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fix-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+.modal {
+    background-color: white;
+    width: 1100px;
+    height: 800px;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+}
+
+.modal-close {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    position: absolute;
+    top: -60px;
+    right: 5px;
+    font-size: 35px;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    border-radius: 15px 1px 15px 1px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal-bg-type {
+    height: 100%;
+    width: 450px;
+    position: absolute;
+    background-image: url(../img/bg-types/fire.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-bg-type img {
+    min-width: 350px;
+    position: absolute;
+    top: 230px;
+    left: 30px;
+}
+
+.modal-info {
+
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px;
+    
+}
+
+.modal-identifier{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+}
+.modal-poke-name{
+    font-size: 40px;
+}
+
+.modal-poke-name::first-letter{
+    text-transform: uppercase;
+}
+
+.modal-poke-id{
+margin-top: 10px;
+font-size: 20px ;
+color: #8d8d8d;
+}
+.modal-type-name{
+    margin-bottom: 50px;
+    display: flex;
+    gap: 0px;
+}
+
+.modal-type-name span{
+    color: var(--fire);
+    padding: 5px 10px;
+    font-size: 20px;
+    background-color: opacity;
+    
+}
+.modal-carac {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.modal-carac div{
+    text-align: center;
+}
+.modal-carac div h2{
+    font-size: 20px;
+}
+.modal-carac div p{
+    font-size: 20px;
+}
