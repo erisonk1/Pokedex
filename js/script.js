@@ -1,24 +1,44 @@
-const pokeImg = document.querySelector(".card-poke-img");
+let pokeImg = document.querySelector(".card-poke-img");
 const pokeName = document.querySelectorAll(".card-poke-name");
 const containerMain = document.querySelector(".container-main");
 const pokeId = document.querySelector(".card-poke-id");
 let card = document.querySelectorAll(".card");
 let i = 0;
 let ind = 1;
-function fetchSingleApi(ind) {
+let pokeTipo;
 
+function CardSingleTipo(i) {
+  const urlType = fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+  Promise.resolve(urlType)
+  .then((response3) => response3.json())
+  .then((response3) => {
+    // console.log(response2)
+    pokeTipo = response3.types[0].type.name;
+    console.log(pokeTipo);
+    const pokeTipoImg = document.querySelectorAll(".card-poke-type");
+    let PokeInd = pokeTipoImg
+    console.log(PokeInd[i-1].src)
+    PokeInd[i-1].src = `./img/icon-types/${pokeTipo}.svg`
+ 
+    // PokeInd.src = `./img/icon-types/${pokeTipo}.svg`
+    // console.log(pokeImg)
+  })
+
+  .catch((error) => console.log("deu erro/nao carregou", error))
+  .finally();
+}
+function fetchSingleApi(ind) {
   const urlType = fetch(`https://pokeapi.co/api/v2/pokemon/${ind}/`);
   Promise.resolve(urlType)
     .then((response2) => response2.json())
     .then((response2) => {
-      console.log(response2)
-  
-      const pokeTipo = response2.types[0].type.name;
-      console.log(pokeTipo);
+      // console.log(response2)
+      pokeTipo = response2.types[0].type.name;
+      // console.log(pokeTipo);
       const pokeBack = document.querySelectorAll(".card-poke-back");
       const PokeInd = pokeBack[ind - 1];
       PokeInd.style.backgroundColor = `var(--${pokeTipo})`
-
+      // console.log(pokeImg)
     })
 
     .catch((error) => console.log("deu erro/nao carregou", error))
@@ -41,12 +61,20 @@ function fetchApi() {
         if(i>=pokeId) {
           console.log('passou');
          }
-        criaCard(urlFoto, pokemon.name, pokeId, urlFoto2);
+       
         fetchSingleApi(ind);
+        criaCard(urlFoto, pokemon.name, pokeId, urlFoto2, pokeTipo);
+        CardSingleTipo(ind)
         ind++
       });
       i = i + 20;
     })
+    // .then(() => {
+    //   const pokeBack = document.querySelectorAll(".card-center");
+    //   const TypeImg = document.querySelectorAll('.card-poke-type');
+    //   console.log(pokeBack, TypeImg)
+
+    // })
     .catch((erro) => console.log("deu erro/nao carregouuuuuuuuuu", erro))
     .finally();
 }
@@ -90,4 +118,15 @@ function criaCard(urlFoto, nome, pokeId, urlFoto2) {
   
   card = document.querySelectorAll(".card");
 }
+// function getType(ind) {
+//   const urlType = fetch(`https://pokeapi.co/api/v2/pokemon/${ind}/`);
+//   Promise.resolve(urlType)
+//     .then((response2) => response2.json())
+//     .then((response2) => {
+//     console.log(response2);
+//     var pokeTipoImg = response2.types[0].type.name;
+//     console.log(pokeTipoImg);
+//     })
+// }
+
 fetchApi();
