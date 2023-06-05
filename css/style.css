@@ -7,7 +7,23 @@
   font-family: "Poppins", sans-serif;
   list-style: none;
 }
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: .3s ease-out;
+}
 
+.container-main button {
+position: relative;
+}
+
+
+.container-main button:hover {
+  transform:scale(1.1) ;
+  transition: .3s ease-out;
+
+}
 
 header {
 background-image: url(../img/bg-red.svg);
@@ -235,14 +251,15 @@ li a{
   transition: 0.5s all ease-in-out;
 }
 
-@keyframes transition {
-  from {
-    opacity: 0;
-    transform: translate3d(-50px, 0, 0);
-  }
+.cardBtn {
+  position: relative;
+}
 
-  to {
-    opacity: 1;
-    transform: translate3d(0px, 0, 0);
-  }
+.card-id {
+  background-color: transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 500;
 }

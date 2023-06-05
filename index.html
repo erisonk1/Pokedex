@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/modal.css">
     <title>Pokédex</title>
   </head>
   <body>
@@ -57,8 +58,83 @@
         <div class="container-main"></div>
         <button class="load" onclick="fetchApi()">Load More</button>
       </div>
+      <div class="fix-modal">
+        <div class="modal">
+            <button class="modal-close">X</button>
+            <div class="modal-bg-type">
+                <img src="./img/charizard.svg" alt="">
+            </div>
+            <div class="modal-info">
+                <div class="modal-identifier">
+                    <h1 class="modal-poke-name">charizard</h1>
+                    <p class="modal-poke-id">#006</p>
+                </div>
+                <div class="modal-type-name">
+                        <span>Fire</span>
+                        <span>Fire</span>
+                </div>
+                <div class="modal-carac">
+                    <div class="modal-heigth">
+                        <h2 class="modal-title carac">Height</h2>
+                        <p class="modal-carac info">1.7m</p>
+                    </div>
+                    <div class="modal-weight">
+                        <h2 class="modal-title carac">Weight</h2>
+                        <p class="modal-carac info">90.5kg</p>
+                    </div>
+                    <div class="modal-categoty">
+                        <h2 class="modal-title carac">Categoty</h2>
+                        <p class="modal-carac info">Flame</p>
+                    </div>
+                    <div class="modal-abilities">
+                        <h2 class="modal-title carac">Abilities</h2>
+                        <p class="modal-carac info">Blaze</p>
+                    </div>
+                </div>
+                <div class="modal-weak">
+                    <h2 class="modal-title">Weaknesses</h2>
+                    <div class="modal-weak-info">
+                        <span class="modal-carac">Water</span>
+                        <span class="modal-carac">Ground</span>
+                        <span class="modal-carac">Rock</span>
+                    </div>
+                   
+                </div>
+  
+                <div class="modal-stats">
+                    <h2>Stats</h2>
+                   <div class="modal-stats-gap">
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">HP</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">Attack</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">Defense</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">SP. attack</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">Sp. defense</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    <div class="modal-stats-info">
+                        <p class="modal-title stat-title">Speed</p>
+                        <div class="line"> <div class="line-bg"></div></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </main>
-
+    
     <script src="./js/script.js"></script>
   </body>
 </html>

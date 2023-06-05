@@ -20,40 +20,67 @@
     --flying: #A6BBE8;
     --water: #1254af;
     --fire : rgba(255, 95, 21, 0.76);
-}
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  list-style: none;
+
+    --bg-bug: #9cba483d;
+    --bg-grass: #9cba483d;
+    --bg-dark: #5957613d;
+    --bg-poison: #5957613d;
+    --bg-dragon: #447AC63d;
+    --bg-electric: #ecd3433d;
+    --bg-fairy: #E296E13d;
+    --bg-fighting: #C44D613d;
+    --bg-ground: #CE80563d;
+    --bg-ice: #8BCEC13d;
+    --bg-normal: #A0A29F3d;
+    --bg-poison: #AC6ACA3d;
+    --bg-physic: #EB8B853d;
+    --bg-psychic: #f058d63d;
+    --bg-rock: #8BCEC13d;
+    --bg-ghost: #616EB73d;
+    --bg-steel: #6594A13d;
+    --bg-flying: #A6BBE83d;
+    --bg-water: #1254af3d;
+    --bg-fire : #ff5f153d;
+
+    
 }
 
 
-body {
-    background-color: black;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-
-}
+  
 
 .fix-modal {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.788);
+    animation: show2 ease-in-out 0.5s;
+    z-index: 600;
+
+
+}
+.fix-modal.active {
+    transition: .5s ease-in-out;
+
+    display: flex;
+
 }
 .modal {
+    display: flex;
     background-color: white;
     width: 1100px;
     height: 800px;
     border-radius: 20px;
     position: relative;
-    display: flex;
-}
+
+    transition: .5s ease-in-out;
+}      
+.modal.active {
+    animation: show .8s;
+} 
 
 .modal-close {
     width: 45px;
@@ -71,7 +98,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+.modal-close:hover{
+    transform: scale(1.05);
 }
 
 .modal-bg-type {
@@ -131,9 +160,17 @@ color: #8d8d8d;
 
 .modal-type-name span{
     color: var(--fire);
-    padding: 5px 10px;
+    padding: 5px 25px;
     font-size: 20px;
-    background-color: opacity;
+    opacity: 1;
+    background-color: var(--bg-fire);
+}
+
+.modal-type-name {
+    padding: 0px 0px;
+    font-size: 20px;
+    gap: 20px;
+
     
 }
 .modal-carac {
@@ -203,3 +240,26 @@ color: #8d8d8d;
     flex-direction: column;
     gap: 15px;
 }
+@keyframes show {
+    from {
+      opacity: 0;
+      transform: translate3d(-50px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0px, 0, 0);
+    }
+  }
+  @keyframes show2 {
+    from {
+      opacity: 0;
+
+    }
+  
+    to {
+      opacity: 1;
+
+    }
+  }
+  
