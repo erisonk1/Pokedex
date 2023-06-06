@@ -11,6 +11,12 @@ let i = 0;
 let ind = 1;
 let pokeTipo;
 
+
+
+function creatModal() {
+  const url = fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+}
+
 function CardSingleTipo(i) {
   const urlType = fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
   Promise.resolve(urlType)
@@ -51,7 +57,7 @@ function fetchSingleApi(ind) {
 
 function fetchApi() {
 
-  const url = fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${i}`);
+  const url = fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${ind - 1}`);
   Promise.resolve(url)
     .then((response) => response.json())
     .then((response) => {
@@ -126,10 +132,42 @@ fetchApi();
 
 
 function handleEvent(event) {
-  console.log(event.target)
+
   fixModal.classList.add('active')
   modal.classList.add('active')
+  let idPoke = event.srcElement;
+  // console.log(idPoke.id)
+  function useModal(){
+    const url = fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke.id}/`)
+    Promise.resolve(url)
+    .then((url) => url.json())
+    .then((url) => {
+
+      const modalImg = document.querySelector('.modal-img-poke');
+      const modalName = document.querySelector('.modal-poke-name')
+      const cardImg = document.querySelectorAll('.card-poke-img');
+      const modalId = document.querySelector('.modal-poke-id')
+      const modalBg = document.querySelector('.modal-bg-type')
+      const pokeType = url.types[0].type.name;
+      const bgLine = document.querySelectorAll('.line-bg')
+      for(i=0; i<bgLine.length; i++) {
+        bgLine[i].style.width = +url.stats[i].base_stat / 1.2 + '%'
+      }
+      console.log(pokeType)
+      modalBg.style.backgroundImage = `url('./img/bg-types/${pokeType}.svg')`;
+      console.log(modalBg.style)
+      modalId.innerText = '#' + url.id
+      // console.log(url.name)
+      modalName.innerText = url.name
+      // console.log(cardImg)
+      modalImg.src = cardImg[idPoke.id - 1].src;
+
+    })
+  }
+  useModal(idPoke.id);
 }
+
+
 function close() {
   modal.classList.remove('active')
   fixModal.classList.remove('active')

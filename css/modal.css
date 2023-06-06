@@ -107,7 +107,7 @@
     height: 100%;
     width: 350px;
     position: absolute;
-    background-image: url(../img/bg-types/fire.svg);
+    /* background-image: url(../img/bg-types/fire.svg); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -117,7 +117,8 @@
 }
 
 .modal-bg-type img {
-    min-width: 400px;
+    min-height: 400px;
+    max-width: 400px;
     position: absolute;
     top: 230px;
     left: 30px;
