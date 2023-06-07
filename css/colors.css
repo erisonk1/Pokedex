@@ -1,6 +1,6 @@
 :root {
     --bug: #9BBA48;
-    --grass: #9BBA48;
+    --grass: #93b928;
     --dark: #595761;
     --poison: #595761;
     --dragon: #447AC6;
@@ -12,7 +12,7 @@
     --normal: #A0A29F;
     --poison: #AC6ACA;
     --physic: #EB8B85;
-    --psychic: #f058d6;
+    --psychic: #eb8b85;
     --rock: #8BCEC1;
     --ghost: #616EB7;
     --steel: #6594A1;
@@ -20,26 +20,26 @@
     --water: #1254af;
     --fire : #ff5f15;
 
-    --bg-bug: #9cba483d;
-    --bg-grass: #9cba483d;
-    --bg-dark: #5957613d;
-    --bg-poison: #5957613d;
-    --bg-dragon: #447AC63d;
-    --bg-electric: #ecd3433d;
-    --bg-fairy: #E296E13d;
-    --bg-fighting: #C44D613d;
-    --bg-ground: #CE80563d;
-    --bg-ice: #8BCEC13d;
-    --bg-normal: #A0A29F3d;
-    --bg-poison: #AC6ACA3d;
-    --bg-physic: #EB8B853d;
-    --bg-psychic: #f058d63d;
-    --bg-rock: #8BCEC13d;
-    --bg-ghost: #616EB73d;
-    --bg-steel: #6594A13d;
-    --bg-flying: #A6BBE83d;
-    --bg-water: #1254af3d;
-    --bg-fire : #ff5f153d;
+    --bg-bug: #9cba482a;
+    --bg-grass: #9cba482a;
+    --bg-dark: #5957612a;
+    --bg-poison: #5957612a;
+    --bg-dragon: #447AC62a;
+    --bg-electric: #ecd3432a;
+    --bg-fairy: #E296E12a;
+    --bg-fighting: #C44D612a;
+    --bg-ground: #CE80562a;
+    --bg-ice: #8BCEC12a;
+    --bg-normal: #A0A29F2a;
+    --bg-poison: #AC6ACA2a;
+    --bg-physic: #EB8B852a;
+    --bg-psychic: #f058d62a;
+    --bg-rock: #8BCEC12a;
+    --bg-ghost: #616EB72a;
+    --bg-steel: #6594A12a;
+    --bg-flying: #A6BBE82a;
+    --bg-water: #1254af2a;
+    --bg-fire : #ff5f152a;
     
 }
 
