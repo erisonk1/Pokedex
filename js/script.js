@@ -13,7 +13,6 @@ let pokeTipo;
 let containerType = document.querySelector(".modal-type-name");
 let idPoke;
 let span;
-let span2;
 
 function creatModal() {
   const url = fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
@@ -61,6 +60,7 @@ function fetchApi() {
     .then((response) => response.json())
     .then((response) => {
       const pokeLista = response.results;
+
       pokeLista.map((pokemon) => {
         const pokeId = pokemon.url.split("/")[6];
 
@@ -104,7 +104,7 @@ function criaCard(urlFoto, nome, pokeId, urlFoto2) {
   }
   if (pokeId >= 649) {
     mcard.innerHTML = `
-<button class="cardBtn" onclick="handleEvent(event)>      
+<button class="cardBtn" onclick="handleEvent(event)" id="${pokeId}">      
 
   <div class="card">
                   <div class="card-center">
@@ -151,15 +151,25 @@ function handleEvent(event) {
         modalHeight.innerText = url.height / 10 + "m";
         modalWeight.innerText = url.weight / 10 + "kg";
         modalAbilities.innerText = url.abilities[0].ability.name;
-        for (i = 0; i < url.types.length; i++) {
-          const createType = document.createElement("span");
-          containerType.appendChild(createType);
-          createType.innerHTML = url.types[i].type.name;
+        function typeModal(url) {
+          span = document.querySelectorAll('.modal-type-name > span')
+          console.log(span)
+          url.types.map((type, index) => {
+              console.log(type.type.name)
+              span[index].innerHTML = type.type.name
+              span[index].style.color = `var(--${type.type.name})`
+              span[index].style.backgroundColor = `var(--bg-${type.type.name})`
+          })
         }
 
-        for (i = 0; i < bgLine.length; i++) {
-          bgLine[i].style.width = +url.stats[i].base_stat / 1.6 + "%";
-        }
+
+        // for (i = 0; i < bgLine.length; i++) {
+        //   bgLine[i].style.width = +url.stats[i].base_stat / 1.6 + "%";
+        // }
+        // url.stats.map((status, index) => {
+        //   bgLine[index].style.width = status.base_stat / 1.6 + "%";
+        // })
+
         console.log(pokeType);
         modalBg.style.backgroundImage = `url('./img/bg-types/${pokeType}.svg')`;
         console.log(modalBg.style);
@@ -168,9 +178,10 @@ function handleEvent(event) {
         modalName.innerText = url.name;
         // console.log(cardImg)
         modalImg.src = cardImg[idPoke.id - 1].src;
+        typeModal(url);
       })
       .then((url) => {
-        changeBgType();
+
       });
   }
   useModal(idPoke.id);
@@ -191,21 +202,10 @@ function changeCategory(idPoke) {
 function close() {
   modal.classList.remove("active");
   fixModal.classList.remove("active");
-   span = document.querySelectorAll(".modal-type-name > span");
-   span2 = document.querySelectorAll(".modal-weak-info > span");
-  for (i = 0; i < span.length; i++) span[i].remove();
-  for (i = 0; i < span2.length; i++) span2[i].remove();
+  span[1].innerHTML = ''
+  span[1].style.backgroundColor = 'white'
 }
-function changeBgType() {
-  span = document.querySelectorAll(".modal-type-name > span");
-  span2 = document.querySelectorAll(".modal-weak-info > span");
-  for (i = 0; i < span.length; i++) {
-    console.log(span[i].innerHTML);
-    span[i].style.backgroundColor = `var(--bg-${span[i].innerHTML})`;
-    span[i].style.color = `var(--${span[i].innerHTML})`;
 
-  }
-  return span;
-}
+
 
 modalClose.addEventListener("click", close);
