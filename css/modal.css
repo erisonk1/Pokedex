@@ -192,14 +192,14 @@ font-size: 20px;
 }
 .modal-stats-info {
   display: flex;
-  width: 260px;
+  width: 265px;
   padding: 0px 20px;
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
 .stat-title {
-  font-size: 30px !important;
+  font-size: 25px !important;
 }
 .line {
   width: 400px;
