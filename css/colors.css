@@ -43,3 +43,82 @@
     
 }
 
+#all:hover{
+
+}
+#bug:hover{
+    color: var(--bug);
+    transition: .3s;
+}
+#grass:hover{
+    color: var(--grass);
+    transition: .3s;
+}
+#dark:hover{
+    color: var(--dark);
+    transition: .3s;
+}
+#dragon:hover{
+    color: var(--dragon);
+    transition: .3s;
+}
+#eletric:hover{
+    color: var(--electric);
+    transition: .3s;
+}
+#water:hover{
+    color: var(--water);
+    transition: .3s;
+}
+
+#fire:hover{
+    color: var(--fire);
+    transition: .3s;
+}
+#fairy:hover{
+    color: var(--fairy);
+    transition: .3s;
+}
+#fighting:hover{
+    color: var(--fighting);
+    transition: .3s;
+}
+#ground:hover{
+    color: var(--ground);
+    transition: .3s;
+}
+#ice:hover{
+    color: var(--ice);
+    transition: .3s;
+}
+#normal:hover{
+    color: var(--normal);
+    transition: .3s;
+}
+#poison:hover{
+    color: var(--poison);
+    transition: .3s;
+}
+#physic:hover{
+    color: var(--physic);
+    transition: .3s;
+}
+#rock:hover{
+    color: var(--rock);
+    transition: .3s;
+}
+#ghost:hover{
+    color: var(--ghost);
+    transition: .3s;
+}
+#steel:hover{
+    color: var(--steel);
+    transition: .3s;
+}
+#flying:hover{
+    color: var(--flying);
+    transition: .3s;
+}
+li > a::first-letter {
+    text-transform: uppercase;
+}

@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@700&display=swap");
 
-html {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-}
+
 
 
 .fix-modal {
@@ -27,8 +23,8 @@ html {
 .modal {
   display: flex;
   background-color: white;
-  width: 1100px;
-  height: 800px;
+  width: 1000px;
+  height: 700px;
   border-radius: 20px;
   position: relative;
 
@@ -59,6 +55,7 @@ html {
   transform: scale(1.05);
 }
 
+
 .modal-bg-type {
   height: 100%;
   width: 350px;
@@ -71,10 +68,17 @@ html {
   justify-content: center;
   position: relative;
 }
+.modal-type-icon{
+  position: absolute;
+  width: 35px;
+  right: 30px;
+  top: 20px;
+}
 
-.modal-bg-type img {
-  min-height: 400px;
-  max-width: 400px;
+
+.modal-img-poke {
+  max-width: 350px;
+  min-height: 350px;
   position: absolute;
   top: 230px;
   left: 30px;
@@ -83,7 +87,7 @@ html {
 .modal-info {
   display: flex;
   flex-direction: column;
-  padding: 50px 0px;
+  padding: 30px 0px;
   padding-left: 150px;
   padding-right: 40px;
   width: 70%;
@@ -123,11 +127,24 @@ html {
   padding: 5px 25px;
   font-size: 20px;
   opacity: 1;
-  /* background-color: var(--bg-fire); */
 }
+
+.modal-weak-info span {
+
+  padding: 5px 25px;
+  font-size: 20px;
+  opacity: 1;
+  ::first-letter{
+    text-transform: uppercase !important;
+  }
+
+}
+
+
 .modal-type-name span::first-letter {
     text-transform: uppercase;
   }
+
 .modal-type-name {
   padding: 0px 0px;
   font-size: 20px;
@@ -173,12 +190,12 @@ font-size: 20px;
 }
 .modal-weak-info {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.modal-weak-info span {
-  display: flex;
-  gap: 20px;
-  font-size: 20px;
+
+.modal-weak-info > span::first-letter {
+ text-transform: uppercase;
 }
 .modal-stats {
   display: flex;
@@ -186,20 +203,21 @@ font-size: 20px;
   align-items: initial;
   width: 100%;
   height: 100%;
+  flex-wrap: wrap;
 }
 .num {
-  font-size: 30px;
+  font-size: 20px;
 }
 .modal-stats-info {
   display: flex;
-  width: 265px;
+  width: 225px;
   padding: 0px 20px;
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
 .stat-title {
-  font-size: 25px !important;
+  font-size: 19px !important;
 }
 .line {
   width: 400px;

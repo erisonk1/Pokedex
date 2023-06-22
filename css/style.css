@@ -71,13 +71,21 @@ h1 {
 .texts h2 {
   font-size: 65px;
 }
+
 .texts p {
   font-size: 18px;
 }
-
+.lighting{
+  width: 250px;
+}
+.position-pokeball {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+}
 .pokebola {
-  margin-top: 250px;
-  width: 1150px;
+  width: 1050px;
 }
 
 .download {
@@ -92,7 +100,7 @@ h1 {
   padding: 0px 90px;
 }
 .select-text {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
 }
@@ -136,11 +144,16 @@ ul {
 }
 li {
   font-size: 19px;
+  font-weight: 600;
   color: rgb(70, 70, 70);
 }
 li a{
   cursor: pointer;
   text-decoration: none;
+  color: grey;
+}
+a::first-letter{
+text-transform: uppercase;
 }
 .container {
   width: 100%;
@@ -238,10 +251,10 @@ li a{
 }
 
 .load {
-  width: 300px;
-  height: 90px;
-  font-size: 30px;
-  background-color: rgba(255, 0, 0, 0.849);
+  width: 250px;
+  height: 70px;
+  font-size: 25px;
+  background-color: rgba(255, 0, 0, 0.699);
   color: white;
   border: none;
   border-radius: 15px;
@@ -266,4 +279,37 @@ li a{
   top: 0;
   z-index: 500;
   border-radius: 20px;
+}
+
+.c-loader {
+  animation: is-rotating 2s infinite;
+  /* border: 5px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: red; */
+  height: 150px;
+  width: 150px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(4turn);
+  }
+}
+
+.loading{
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.788);
+  z-index: 700;
+  display: none;
+  transition: 0.5s;
+}
+
+.loading.active {
+  display: flex;
+  transition: 0.5s;
 }

@@ -12,9 +12,15 @@ let ind = 1;
 let pokeTipo;
 let containerType = document.querySelector(".modal-type-name");
 let idPoke;
-let span;
+let spanType;
 let cardPokeImg;
 const search = document.querySelector(".search")
+let pokeWeak;
+let modalWeak = document.querySelector('.modal-weak-info')
+const load = document.querySelector('.load')
+const lista = document.querySelectorAll('li > a');
+let pokeIdImg;
+const loading = document.querySelector('.loading')
 
 function FilterCardSingleTipo(i) {
   const urlType = fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
@@ -65,6 +71,7 @@ function fetchSingleApi(ind) {
 }
 
 function fetchApi(i) {
+  loading.style.display = "flex"
   const url = fetch(
     `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${ind - 1}`
   );
@@ -84,7 +91,7 @@ function fetchApi(i) {
         ind++;
       });
       i = i + 20;
-    })
+    }).then(() =>   loading.style.display = "none")
 
     .catch((erro) => console.log("deu erro/nao carregouuuuuuuuuu", erro))
     .finally();
@@ -96,12 +103,12 @@ function criaCard(urlFoto, nome, pokeId, urlFoto2) {
 
   if (pokeId < 649) {
     mcard.innerHTML = `
-  <button class="cardBtn" onclick="handleEvent(event)" id="${pokeId}"> 
+  <button class="cardBtn" onclick="openCard(event)" id="${pokeId}"> 
 
     <div class="card">
                 <div class="card-center">
                  <div class="card-poke-back">
-                     <img class="card-poke-img" src="${urlFoto}" alt="">
+                     <img class="card-poke-img" id="${pokeIdImg}" src="${urlFoto}" alt="">
                  </div>
                 </div> 
                 
@@ -116,7 +123,7 @@ function criaCard(urlFoto, nome, pokeId, urlFoto2) {
   }
   if (pokeId >= 649) {
     mcard.innerHTML = `
-<button class="cardBtn" onclick="handleEvent(event)" id="${pokeId}">      
+<button class="cardBtn" onclick="openCard(event)" id="${pokeId}">      
 
   <div class="card">
                   <div class="card-center">
@@ -140,14 +147,14 @@ function criaCard(urlFoto, nome, pokeId, urlFoto2) {
 
 fetchApi();
 
-function handleEvent(event) {
+function openCard(event) {
   fixModal.classList.add("active");
   console.log(event)
   modal.classList.add("active");
   idPoke = event.srcElement;
+  img = event.srcElement.offsetParent.childNodes[1].firstElementChild.firstElementChild.firstElementChild
   
-  
-  function useModal() {
+  function useModal(event) {
     const url = fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke.id}/`);
     Promise.resolve(url)
       .then((url) => url.json())
@@ -157,22 +164,26 @@ function handleEvent(event) {
         const cardImg = document.querySelectorAll(".card-poke-img");
         const modalId = document.querySelector(".modal-poke-id");
         const modalBg = document.querySelector(".modal-bg-type");
+        pokeWeak = url.types[0].type.url
+        console.log(pokeWeak)
         const pokeType = url.types[0].type.name;
         const bgLine = document.querySelectorAll(".line-bg");
         const modalHeight = document.querySelector(".modal-height > p");
         const modalWeight = document.querySelector(".modal-weight > p");
         const modalAbilities = document.querySelector(".modal-abilities > p");
+        const typeIcon = document.querySelector(".modal-type-icon");
+        typeIcon.src = `./img/icon-types/${pokeType}.svg`
         modalHeight.innerText = url.height / 10 + "m";
         modalWeight.innerText = url.weight / 10 + "kg";
         modalAbilities.innerText = url.abilities[0].ability.name;
         function typeModal(url) {
-          span = document.querySelectorAll(".modal-type-name > span");
-          console.log(span);
+          spanType = document.querySelectorAll(".modal-type-name > span");
+          console.log(spanType);
           url.types.map((type, index) => {
             console.log(type.type.name);
-            span[index].innerHTML = type.type.name;
-            span[index].style.color = `var(--${type.type.name})`;
-            span[index].style.backgroundColor = `var(--bg-${type.type.name})`;
+            spanType[index].innerHTML = type.type.name;
+            spanType[index].style.color = `var(--${type.type.name})`;
+            spanType[index].style.backgroundColor = `var(--bg-${type.type.name})`;
           });
         }
         url.stats.map((pokeStatus, index) => {
@@ -187,24 +198,40 @@ function handleEvent(event) {
         console.log(modalBg.style);
         modalId.innerText = "#" + url.id;
         
-        cardPokeImg = document.querySelector('.card-poke-img')
+        
 
         modalName.innerText = url.name;
         // console.log(cardImg)
-        if(cardImg.length == 1) {
-          modalImg.src = cardPokeImg.src;
+        function mudaImagem() {
+          console.log(img)
+          modalImg.src = img.src
+          cardPokeImg = document.querySelectorAll('.card-poke-img')
+          console.log(cardPokeImg)
         }
-        else{
-          modalImg.src = cardImg[idPoke.id - 1].src;
-        }
-
+        mudaImagem()
         typeModal(url);
+      function weak(pokeWeak) {
+        const url = fetch(`${pokeWeak}`)
+        .then((r) => r.json())
+        .then((r) => {
+          console.log(r)
+          const weak = r;
+          weak.damage_relations.double_damage_from.map((weak, index) => {
+            console.log(weak)
+            const spanWeak = document.createElement("span");
+            modalWeak.appendChild(spanWeak)
+            spanWeak.innerText = `${weak.name}`;
+            spanWeak.style.color = `var(--${weak.name})`;
+            spanWeak.style.backgroundColor = `var(--bg-${weak.name})`;
+          })
+        })
+      }
+      weak(pokeWeak)
       });
   }
   useModal(idPoke.id);
   changeCategory(idPoke.id);
 }
-
 function changeCategory(idPoke) {
   const url = fetch(`https://pokeapi.co/api/v2/pokemon-species/${idPoke}`);
   Promise.resolve(url)
@@ -215,16 +242,17 @@ function changeCategory(idPoke) {
       modalCategory.innerText = categoryName.split(" ")[0];
     });
 }
-
 function close() {
   modal.classList.remove("active");
   fixModal.classList.remove("active");
-  span[1].innerHTML = "";
-  span[1].style.backgroundColor = "white";
+  spanType[1].innerHTML = "";
+  spanType[1].style.backgroundColor = "transparent";
+  modalWeak.innerHTML = "";
 }
 
 function filter() {
-  const url = fetch(`https://pokeapi.co/api/v2/pokemon/${search.value}/`)
+
+  url = fetch(`https://pokeapi.co/api/v2/pokemon/${search.value.toLowerCase()}/`)
   .then((response) => response.json())
   .then((response) => {
     console.log(response)
@@ -236,7 +264,7 @@ function filter() {
   const urlFoto2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png`
     console.log(pokeId, urlFoto, response.name, urlFoto2,pokeTipo)
   criaCard(urlFoto, response.name, pokeId, urlFoto2);
-  pokeId
+
   function aaaa(response) {
     pokeTipo = response.types[0].type.name;
     const pokeBack = document.querySelector(".card-poke-back");
@@ -244,12 +272,14 @@ function filter() {
     const CardType = document.querySelector('.card-poke-type')
     CardType.src = `./img/icon-types/${pokeTipo}.svg`
     cardPokeImg = document.querySelector('.card-poke-img')
+    load.style.display = "none"
   }
 aaaa(response)
 
   }).then(()=> {
-    FilterCardSingleTipo(search.value)
+    FilterCardSingleTipo(search.value.toLowerCase())
     console.log('aaaaaaa')
+
   }) 
     
 
@@ -260,3 +290,86 @@ aaaa(response)
       filter();
     }});
 modalClose.addEventListener("click", close);
+
+var typeName;
+
+lista.forEach((el) => 
+el.addEventListener('click', (event) => {
+  typeName = el.innerText.toLowerCase()
+})
+);
+
+lista.forEach((el) => 
+el.addEventListener('click', filterByType)
+);
+
+function filterByType() {
+  console.log(typeName)
+
+  
+  lista[0].addEventListener('click', all)
+  function filterType() {
+    loading.style.display = "flex"
+    const url = fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
+    .then((r) => r.json())
+    .then((r) => {
+      console.log(r.pokemon)
+      containerMain.innerHTML = '';
+      r.pokemon.map((pokemon, index) => {
+        const id = pokemon.pokemon.url.split('/')[6]
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        .then((r) => r.json())
+        .then((r) => {
+          console.log(r)
+          const urlFoto = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+          const urlFoto2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+          
+          criaCard(urlFoto, r.name, id, urlFoto2);
+          changeBg()
+          i = 0
+          ind = 1
+        })
+      })
+
+    }).then(() => loading.style.display = "none")
+  }
+  
+  lista.forEach(a => {
+    a.addEventListener('click', filterType)
+  })
+
+
+    lista[0].removeEventListener('click', filterType)
+
+  
+  function changeBg() {
+    const pokeBack = document.querySelectorAll(".card-poke-back");
+    pokeBack.forEach((pb) => {
+      pb.style.backgroundColor = `var(--${typeName})`;
+    })
+    const CardType = document.querySelectorAll('.card-poke-type')
+    CardType.forEach((ct) => {
+      ct.src = `./img/icon-types/${typeName}.svg`
+    load.style.display = "none"
+    })
+    
+  }
+
+}
+function all() {
+  containerMain.innerHTML = ""
+  i = 0
+  ind = 1
+  pokeTipo
+  containerMain.innerHTML = ""
+  fetchApi()
+  i = 0
+  ind = 1
+  load.style.display = "block"
+}
+
+filterByType()
+lista.forEach((li) => {
+li.addEventListener('click', filterByType)
+})
+

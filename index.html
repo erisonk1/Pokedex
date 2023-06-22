@@ -21,8 +21,11 @@
           The perfect guide for those who want to hunt Pokémons around the world
         </p>
       </div>
-
-      <img class="pokebola" src="./img/pokeball-red.png" alt="" />
+      <div class="position-pokeball">
+        <img class="lighting" src="./img/lighting.svg" alt="" />
+        <img class="pokebola" src="./img/pokeball-red.png" alt=""/>
+      </div>
+     
     </header>
     <div class="select">
       <h1 class="select-text">Select your <br />Pokémon!</h1>
@@ -31,36 +34,36 @@
     <main>
       <nav>
         <ul>
-          <li><a href="#">All</a></li>
-          <li><a href="#">Bug</a></li>
-          <li><a href="#">Grass</a></li>
-          <li><a href="#">Dark</a></li>
-          <li><a href="#">Poison</a></li>
-          <li><a href="#">Dragon</a></li>
-          <li><a href="#">Electric</a></li>
-          <li><a href="#">Water</a></li>
-          <li><a href="#">Fire</a></li>
-          <li><a href="#">Fairy</a></li>
-          <li><a href="#">Fighting</a></li>
-          <li><a href="#">Ground</a></li>
-          <li><a href="#">Ice</a></li>
-          <li><a href="#">Normal</a></li>
-          <li><a href="#">Poison</a></li>
-          <li><a href="#">Physic</a></li>
-          <li><a href="#">Rock</a></li>
-          <li><a href="#">Ghost</a></li>
-          <li><a href="#">Steel</a></li>
-          <li><a href="#">Flying</a></li>
+          <li><a href="#top all" id="all">All</a></li>
+          <li><a href="#top bug" id="bug">Bug</a></li>
+          <li><a href="#top grass" id="grass">Grass</a></li>
+          <li><a href="#top dark" id="dark">Dark</a></li>
+          <li><a href="#top dragon" id="dragon">Dragon</a></li>
+          <li><a href="#top eletric" id="eletric">Electric</a></li>
+          <li><a href="#top water" id="water">Water</a></li>
+          <li><a href="#top fire" id="fire">Fire</a></li>
+          <li><a href="#top fairy" id="fairy">Fairy</a></li>
+          <li><a href="#top fighting" id="fighting">Fighting</a></li>
+          <li><a href="#top ground" id="ground">Ground</a></li>
+          <li><a href="#top ice" id="ice">Ice</a></li>
+          <li><a href="#top normal" id="normal">Normal</a></li>
+          <li><a href="#top poison" id="poison">Poison</a></li>
+          <li><a href="#top physic" id="physic">Psychic</a></li>
+          <li><a href="#top rock" id="rock">Rock</a></li>
+          <li><a href="#top ghost" id="ghost">Ghost</a></li>
+          <li><a href="#top steel" id="steel">Steel</a></li>
+          <li><a href="#top flying" id="flying">Flying</a></li>
         </ul>
       </nav>
       <div class="container">
-        <div class="container-main"></div>
+        <div class="container-main" id="top"></div>
         <button class="load" onclick="fetchApi(i)">Load More</button>
       </div>
       <div class="fix-modal">
         <div class="modal">
             <button class="modal-close">X</button>
             <div class="modal-bg-type">
+                <img class="modal-type-icon" src="./img/fire.svg" alt="">
                 <img class="modal-img-poke" src="./img/charizard.svg" alt="">
             </div>
             <div class="modal-info">
@@ -93,42 +96,11 @@
                 <div class="modal-weak">
                     <h2 class="modal-title">Weaknesses</h2>
                     <div class="modal-weak-info">
-                        <span class="modal-carac">water</span>
-                        <span class="modal-carac">ground</span>
-                        <span class="modal-carac">rock</span>
+
                     </div>
                    
                 </div>
   
-                <!-- <div class="modal-stats">
-                    <h2>Stats</h2>
-                   <div class="modal-stats-gap">
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">HP</p>
-                        <div class="line"> <div class="line-bg line-hp"></div></div>
-                    </div>
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">Attack</p>
-                        <div class="line"> <div class="line-bg line-attack"></div></div>
-                    </div>
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">Defense</p>
-                        <div class="line"> <div class="line-bg line-defense"></div></div>
-                    </div>
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">SP. attack</p>
-                        <div class="line"> <div class="line-bg line-spattack"></div></div>
-                    </div>
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">Sp. defense</p>
-                        <div class="line"> <div class="line-bg line-spdefense"></div></div>
-                    </div>
-                    <div class="modal-stats-info">
-                        <p class="modal-title stat-title">Speed</p>
-                        <div class="line"> <div class="line-bg line-speed"></div></div>
-                    </div>
-                    </div>
-                </div> -->
                 <div class="modal-stats">
                   <h2>Stats</h2>
                   <div class="modal-stats-gap">
@@ -161,7 +133,12 @@
         </div>
     </div>
     </main>
-    
+    <div class="loading">
+      <div class="c-loader"></div>
+      <img src="./img/NicePng_pokeball-png_4392804.png" class="c-loader" alt="">
+    </div>
+
+
     <script src="./js/script.js"></script>
   </body>
 </html>
