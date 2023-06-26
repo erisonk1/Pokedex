@@ -251,7 +251,7 @@ function close() {
 }
 
 function filter() {
-
+  containerMain.innerHTML = ''
   url = fetch(`https://pokeapi.co/api/v2/pokemon/${search.value.toLowerCase()}/`)
   .then((response) => response.json())
   .then((response) => {
@@ -306,38 +306,39 @@ el.addEventListener('click', filterByType)
 function filterByType() {
   console.log(typeName)
 
-  
+  filterType()
   lista[0].addEventListener('click', all)
-  function filterType() {
+   function filterType() {
     loading.style.display = "flex"
     const url = fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
     .then((r) => r.json())
-    .then((r) => {
+    .then( (r)  => {
       console.log(r.pokemon)
       containerMain.innerHTML = '';
-      r.pokemon.map((pokemon, index) => {
+      r.pokemon.map((pokemon) => {
         const id = pokemon.pokemon.url.split('/')[6]
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then((r) => r.json())
-        .then((r) => {
+        .then(async (r) => {
           console.log(r)
           const urlFoto = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
           const urlFoto2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
           
-          criaCard(urlFoto, r.name, id, urlFoto2);
+           criaCard(urlFoto, r.name, id, urlFoto2);
           changeBg()
           i = 0
           ind = 1
+          await escondeLoading()
         })
       })
 
     }).then(() => loading.style.display = "none")
   }
   
-  lista.forEach(a => {
-    a.addEventListener('click', filterType)
-  })
 
+function escondeLoading(){
+  loading.style.display = "none"
+}
 
     lista[0].removeEventListener('click', filterType)
 
@@ -356,6 +357,7 @@ function filterByType() {
   }
 
 }
+
 function all() {
   containerMain.innerHTML = ""
   i = 0
@@ -369,7 +371,7 @@ function all() {
 }
 
 filterByType()
-lista.forEach((li) => {
-li.addEventListener('click', filterByType)
-})
+// lista.forEach((li) => {
+// li.addEventListener('click', filterByType)
+// })
 
