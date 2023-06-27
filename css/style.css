@@ -13,7 +13,9 @@ button {
   cursor: pointer;
   transition: .3s ease-out;
 }
-
+.open-nav {
+  display: none;
+}
 .container-main button {
 position: relative;
 }
@@ -130,7 +132,7 @@ main {
   
 }
 nav {
-  width: 600px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,6 +163,7 @@ text-transform: uppercase;
   flex-direction: column;
   align-items: center;
   padding-bottom: 50px;
+  position: relative;
 }
 .container-main {
   background-color: rgb(255, 255, 255);
@@ -170,7 +173,7 @@ text-transform: uppercase;
   padding: 60px 17px;
   position: relative;
   width: 100%;
-
+  position: relative;
   flex-wrap: wrap;
   gap: 25px;
   border-left: 2px solid rgb(218, 218, 218);
@@ -283,11 +286,11 @@ text-transform: uppercase;
 
 .c-loader {
   animation: is-rotating 2s infinite;
-  /* border: 5px solid #e5e5e5;
-  border-radius: 50%;
-  border-top-color: red; */
   height: 150px;
   width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes is-rotating {
@@ -300,8 +303,8 @@ text-transform: uppercase;
   justify-content: center;
   align-items: center;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   background-color: rgba(0, 0, 0, 0.788);
   z-index: 700;

@@ -91,7 +91,9 @@ function fetchApi(i) {
         ind++;
       });
       i = i + 20;
-    }).then(() =>   loading.style.display = "none")
+    }).then(() =>   
+    setTimeout(() => loading.style.display = "none"))
+    
 
     .catch((erro) => console.log("deu erro/nao carregouuuuuuuuuu", erro))
     .finally();
@@ -332,7 +334,7 @@ function filterByType() {
         })
       })
 
-    }).then(() => loading.style.display = "none")
+    }).then(() => setTimeout(() => loading.style.display = "none", 20000))
   }
   
 
@@ -375,3 +377,13 @@ filterByType()
 // li.addEventListener('click', filterByType)
 // })
 
+
+const imgFilter = document.querySelector('.open-nav > img')
+const btnFilter = document.querySelector('.open-nav')
+
+const nav = document.querySelector('nav')
+function openNav() {
+  nav.classList.toggle('active')
+  imgFilter.classList.toggle('active')
+  btnFilter.classList.toggle('active')
+}

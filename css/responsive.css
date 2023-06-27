@@ -1,0 +1,158 @@
+html {
+    overflow-x: hidden;
+}
+
+@media(max-width: 957px){
+    nav {
+        display: none;
+        animation: transition 0.5s;
+        transition: .5s all ease-in-out;
+        background-color: white;
+        padding-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    nav.active {
+        display: flex;
+        position: absolute;
+        animation: transition 0.5s;
+        transition: .5s all ease-in-out;
+        z-index: 300;
+    }
+    .open-nav {
+        display: flex;
+        background-color: rgb(255, 0, 0);
+        width: 50px;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        position: absolute;
+        left: 0px;
+        top: 20px;
+        font-size: 40px;
+       border-radius: 5px;
+      }
+
+      .open-nav.active {
+        left: 200px;
+      }
+      @keyframes transition {
+        from{
+          opacity: 0;
+          transform: translate3d(-50px, 0, 0);
+          
+        } 
+      
+        to{
+          opacity: 1;
+          transform: translate3d(0px, 0, 0);
+        }
+      }
+      
+    .img-nav{
+        transform: rotate(180deg);
+        width: 35px;
+        transition: .5s all;
+    }
+    .img-nav.active {
+        transition: .5s all;
+        transform: rotate(0);
+      }
+}
+@media (max-width: 1225px) {
+    .card {
+        width: 230px;
+        height: 210px;
+    }
+    .card-poke-back {
+        width: 120px;
+        height: 120px;
+    }
+    .card-poke-img {
+        width: 100px;
+        height: 100px;
+    }
+    .card-poke-id {
+        margin: 0;
+    }
+    .card-poke-type {
+        width: 20px;
+    }
+    .card-poke-name {
+        font-size: 18px;
+    }
+}
+@media (max-width: 1095px) {
+    .pokebola {
+        width: 850px;
+        margin-top: 30px;
+    }
+    .lighting {
+        width: 200px;
+        margin-top: 30px;
+    }
+    nav {
+        width: 200px;
+    }
+
+}
+
+@media (max-width: 742px) {
+    .top{
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .pokebola {
+        width: 690px;
+        margin: 0
+    }
+    .lighting {
+        width: 150px;
+        margin: 0
+    }
+    .position-pokeball {
+        margin-top: 250px !important;
+    }
+    
+    .nav {
+        width: 200px !important;
+    }
+
+    .texts p {
+        padding: 0px 30px;
+    }
+}
+
+
+@media (max-width: 738px) {
+    .pokebola {
+        width: 690px;
+        margin: 0
+    }
+    .lighting {
+        width: 150px;
+        margin: 0
+    }
+    .position-pokeball {
+        margin-top: 250px !important;
+    }
+    
+    .nav {
+        width: 200px !important;
+    }
+
+    .select-text{
+        font-size: 30px;
+    }
+    .search {
+        width: 200px;
+        height: 40px;
+    }
+    nav {
+        width: 300px;
+    }
+
+}

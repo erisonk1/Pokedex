@@ -8,7 +8,7 @@
     --fairy: #E296E1;
     --fighting: #C44D61;
     --ground: #CE8056;
-    --ice: ##7CC5B7;
+    --ice: #7CC5B7;
     --normal: #A0A29F;
     --poison: #AC6ACA;
     --psychic: #eb8b85;
@@ -98,8 +98,8 @@
     color: var(--poison);
     transition: .3s;
 }
-#physic:hover{
-    color: var(--physic);
+#psychic:hover{
+    color: var(--psychic);
     transition: .3s;
 }
 #rock:hover{
