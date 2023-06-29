@@ -160,8 +160,7 @@ function openCard(event) {
     const url = fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke.id}/`);
     Promise.resolve(url)
       .then((url) => url.json())
-      .then((url) => {
-        let modalImg = document.querySelector(".modal-img-poke");
+      .then((url) => {        let modalImg = document.querySelector(".modal-img-poke");
         const modalName = document.querySelector(".modal-poke-name");
         const cardImg = document.querySelectorAll(".card-poke-img");
         const modalId = document.querySelector(".modal-poke-id");
@@ -178,15 +177,21 @@ function openCard(event) {
         modalHeight.innerText = url.height / 10 + "m";
         modalWeight.innerText = url.weight / 10 + "kg";
         modalAbilities.innerText = url.abilities[0].ability.name;
+        console.log(url.types)
+
         function typeModal(url) {
           spanType = document.querySelectorAll(".modal-type-name > span");
           console.log(spanType);
+          console.log(url.types)
+
           url.types.map((type, index) => {
             console.log(type.type.name);
             spanType[index].innerHTML = type.type.name;
             spanType[index].style.color = `var(--${type.type.name})`;
             spanType[index].style.backgroundColor = `var(--bg-${type.type.name})`;
+            
           });
+          
         }
         url.stats.map((pokeStatus, index) => {
           stats[index].innerText = pokeStatus.base_stat;
@@ -250,6 +255,7 @@ function close() {
   spanType[1].innerHTML = "";
   spanType[1].style.backgroundColor = "transparent";
   modalWeak.innerHTML = "";
+
 }
 
 function filter() {

@@ -160,23 +160,21 @@ html {
 
 @media (max-width: 1037px) {
     .modal-type-icon {
-        right: auto;
         left: 30px;
+        right: auto;
     }
-    
+
     .modal-close {
-        top: 15px;
-        z-index: 500;
+        top: 13px;
         right: 30px;
-        left: auto;
-    }
+        z-index: 500;
     }
     .fix-modal {
         align-items: baseline;
          overflow: scroll;
          height: 100%;
          width: 100%;
-        display: inline;
+      
     }
     .modal {
         flex-direction: column;
@@ -193,13 +191,13 @@ html {
         width: 100%;
         height: 300px;
         display: flex;
-        align-items: end;
+        align-items: initial;
     }
     .modal-img-poke{
         position: static;
         max-width: 250px;
         max-height: 250px;
-        margin-top: 40px;
+ 
     }
     .modal-info {
         height: auto;
@@ -256,4 +254,5 @@ html {
     justify-content: center;
     align-items: center;
 }
-}
+ }
+    
