@@ -212,8 +212,8 @@ text-transform: uppercase;
 }
 
 .card-poke-img {
-  min-height: 140px;
-  max-width: 140px;
+  height: 100%;
+  width: 100%;
 }
 
 .card-poke-img2 {
@@ -315,4 +315,19 @@ text-transform: uppercase;
 .loading.active {
   display: flex;
   transition: 0.5s;
+}
+
+.btn-top {
+  background-color: rgb(240, 62, 62);
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  position: fixed;
+  top: 20px;
+  display: none;
+  transition: 1s all ease-in-out
+}
+
+.btn-top.visible {
+  display: flex;
 }
