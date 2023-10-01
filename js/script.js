@@ -275,7 +275,7 @@ function filter() {
 }
 
 search.addEventListener("keyup", (event) => {
-  if (event.code == "Enter") {
+  if (event.code == "Enter" || event.code == "NumpadEnter") {
     filter();
   }
 });
@@ -378,4 +378,10 @@ function voltarTopo() {
   }
 }
 
+btnTop.addEventListener("click", function() {
+  window.scrollTo(0, 848);
+});
+
 window.addEventListener("scroll", voltarTopo);
+
+
