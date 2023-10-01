@@ -275,7 +275,7 @@ function filter() {
 }
 
 search.addEventListener("keyup", (event) => {
-  if (event.code == "Enter" || event.code == "NumpadEnter") {
+  if (event.code == "keyup") {
     filter();
   }
 });
